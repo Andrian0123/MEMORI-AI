@@ -1,0 +1,9 @@
+.engram/*.db
+.engram/*.db-journal
+.engram/lora/
+.env
+*.log
+.DS_Store
+.obsidian/workspace.json
+.obsidian/cache/
+*.swap

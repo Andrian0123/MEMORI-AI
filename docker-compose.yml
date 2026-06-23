@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  engram:
+    image: engram/memory:latest
+    container_name: engram-smeta
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.engram:/data/engram
+      - ./scripts:/app/scripts:ro
+    environment:
+      - ENGRAM_DB_PATH=/data/engram/engram.db
+      - ENGRAM_ENABLE_LORA=true
+      - ENGRAM_LORA_MODEL_PATH=/data/engram/lora
+      - ENGRAM_LOG_LEVEL=info
+    restart: unless-stopped
+
+  engram-trainer:
+    image: engram/trainer:latest
+    container_name: engram-trainer
+    volumes:
+      - ./.engram:/data/engram
+    environment:
+      - TRAINER_SCHEDULE=0 2 * * *
+      - TRAINER_DEEP_ANALYSIS=true
+    profiles:
+      - training
