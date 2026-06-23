@@ -1,0 +1,5 @@
+.engram/*.db
+.ollama/models/
+.obsidian/workspace.json
+.hub-config.json
+.env
