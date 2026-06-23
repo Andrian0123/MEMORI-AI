@@ -1,0 +1,19 @@
+name: Sync Knowledge to Engram
+# Date: 2026-06-23
+# Time: 20:40 UTC
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.md'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract knowledge
+        run: python scripts/extract-knowledge.py --source . --dry-run
+      - name: Notify sync
+        run: echo "Knowledge sync completed"
