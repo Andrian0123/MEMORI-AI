@@ -1,6 +1,7 @@
 .engram/*.db
 .engram/*.db-journal
 .engram/lora/
+.hub/data/
 .env
 *.log
 .DS_Store
